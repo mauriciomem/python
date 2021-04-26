@@ -2,6 +2,8 @@
 
 A small flask app to test sqlalchemy
 
+![](https://github.com/mauriciomem/python/blob/main/pybooks/home.jpg)
+
 ## Run
 
  1- Set environment variables
