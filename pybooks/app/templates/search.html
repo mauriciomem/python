@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+
+{% block maincolumn %}
+
+<div class="col">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Search</h1>
+      <p class="lead">By Title, Author, ISBN and Release date.</p>
+    </div>
+  </div>
+</div>
+<div class="col">
+  <form action="" method="POST">  
+    <div class="form-row align-items-center">
+      <div class="col">
+        <label class="sr-only" for="inlineFormInput">Name</label>
+        <input list="books" type="search" name="search" class="form-control mb-2" id="inlineFormInput" placeholder="Dormir al Sol">
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% if search %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="font-italic">n</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">ISBN</th>
+      <th scope="col">Release Year</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    {% for book in search %}
+    <tr>
+      <th scope="row"> {{ loop.index }} </th>
+      <td><a href="{{ url_for('book', book_id=book.id) }}">{{ book.title }}</a></td>
+      <td>{{ book.author}}</td>
+      <td>{{ book.isbn }}</td>
+      <td>{{ book.year }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

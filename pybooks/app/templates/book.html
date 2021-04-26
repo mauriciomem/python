@@ -1,0 +1,63 @@
+{% extends "main.html" %}
+
+{% block maincolumn %}
+    <h3 class="pb-4 mb-4 border-bottom"> Book details</h3>
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{ book.title }}</h2>
+        <p>Author: {{book.author}} ISBN: {{ book.isbn }} Relase date: {{ book.year }}</p>
+        {% if grinfo %}
+          <p><a href="{{ grinfo['bookurl'] }}"> Goodreads site</a> 
+            Ratings Count: {{ grinfo['work_ratings_count'] }} 
+            Goodreads Reviews count: {{ grinfo['work_text_reviews_count'] }}
+            Avg Rating: {{ grinfo['average_rating'] }}</p>
+        {% endif %}
+        <!--<p>{{book.synopsis}}</p>-->
+    </div>
+
+    {% if user %}
+    <form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Score</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Review title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Review</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+      </form>
+      {% endif %}
+
+    <h3 class="pb-4 mb-4 border-bottom"> Book details</h3>
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{ book.title }}</h2>
+        <p>{{book.author}}</p>
+        <p>{{ book.isbn }}</p>
+        <p>{{ book.year }}</p>
+        <!--<p>{{book.synopsis}}</p>-->
+    </div>
+{% endblock %}
+
+
+{% block sidebar %}
+
+<div class="p-4 mb-3 bg-light rounded">
+  <h4>Latest</h4>
+      <ul class="list-unstyled mb-0">
+        {% for rev in reviews %}
+          <li>
+            <p><a href="{{url_for('review', review_id=rev.Reviews.id)}}">{{ rev.title }}</a> by <a href="#">{{ rev.name }} {{ rev.surname }}</a> on {{moment(rev.Reviews.created).format('LL')}}</p>
+          </li>
+        {% endfor %}
+      </ul>
+  </div>
+{% endblock %}
