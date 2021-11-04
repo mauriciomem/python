@@ -4,4 +4,4 @@
 
 **Always create a new branch before merging directly to master**
 
-**When you are about to name a new branch please use as a prefix `feature` or `bugfix`**
+When you are about to name a new branch please use as a prefix `feature` or `bugfix`
