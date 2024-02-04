@@ -1,7 +1,5 @@
-## Python Projects
+## Python projects
 
-**If you are working on a python project please leave it in this repository**
+ This repo includes public scripts, articles, and examples related to Python.
 
-**Always create a new branch before merging directly to master**
-
-When you are about to name a new branch please use as a prefix `feature` or `bugfix`
+**For any suggestion, fix, or improvement, please create a new issue or pull request**
